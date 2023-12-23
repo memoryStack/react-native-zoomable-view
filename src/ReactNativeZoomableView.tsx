@@ -66,6 +66,7 @@ class ReactNativeZoomableView extends Component<
     panBoundaryPadding: 0,
     visualTouchFeedbackEnabled: true,
     disablePanOnInitialZoom: false,
+    disableShifting: false
   };
 
   private panAnim = new Animated.ValueXY({ x: 0, y: 0 });
@@ -535,7 +536,7 @@ class ReactNativeZoomableView extends Component<
 
       const { dx, dy } = gestureState;
       const isShiftGesture = Math.abs(dx) > 2 || Math.abs(dy) > 2;
-      if (isShiftGesture) {
+      if (isShiftGesture && !this.props.disableShifting) {
         this.gestureType = 'shift';
         this._handleShifting(gestureState);
       }
