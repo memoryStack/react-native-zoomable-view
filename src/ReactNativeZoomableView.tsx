@@ -425,6 +425,7 @@ class ReactNativeZoomableView extends Component<
         this.gestureType === 'shift' &&
         this.props.disablePanOnInitialZoom &&
         this.zoomLevel === this.props.initialZoom
+        || this.props.disableShifting
       )
     ) {
       getPanMomentumDecayAnim(this.panAnim, {
@@ -536,7 +537,7 @@ class ReactNativeZoomableView extends Component<
 
       const { dx, dy } = gestureState;
       const isShiftGesture = Math.abs(dx) > 2 || Math.abs(dy) > 2;
-      if (isShiftGesture && !this.props.disableShifting) {
+      if (isShiftGesture) {
         this.gestureType = 'shift';
         this._handleShifting(gestureState);
       }
