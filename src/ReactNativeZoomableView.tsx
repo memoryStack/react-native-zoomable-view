@@ -729,7 +729,8 @@ class ReactNativeZoomableView extends Component<
     // Skips shifting if disablePanOnInitialZoom is set and we're on the initial zoom level
     if (
       this.props.disablePanOnInitialZoom &&
-      this.zoomLevel === this.props.initialZoom
+      this.zoomLevel === this.props.initialZoom ||
+      this.props.disableShifting
     ) {
       return;
     }
